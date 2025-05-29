@@ -30,7 +30,8 @@ pipeline {
         stage('Deploy') {
             steps {
                sh 'mvn clean package'  
-               sh 'ansible-playbook ansible/playbook.yml -i ansible/hosts.ini'
+               sh 'sh "ansible-playbook ansible/playbook.yml -i ansible/hosts.ini --extra-vars 'war_file_path=$WORKSPACE/target/MavenAnsibleWebApp2.war'"
+'
             }
         }
 
